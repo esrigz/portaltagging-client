@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Cal</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <style>
+  .form-control {
+    margin-bottom: 10px;
+  }
+  .btn-danger {
+    margin-top: 8px;
+  }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <a class="navbar-brand"><i class="glyphicon glyphicon-bullhorn"></i> Portal标签分类系统</a>
+    </div>
+  </nav>
+  <div class="container" id="app">
+    <div class="col-sm-7">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>添加标签</h3>
+        </div>
+        <div class="panel-body">
+          <div>
+            <input class="form-control" placeholder="标题名字" v-model="tag.name">
+            <textarea class="form-control" placeholder="标签类型" v-model="tag.type"></textarea>
+            <button class="btn btn-primary" v-on:click="addTag">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="list-group">
+        <a href="#" class="list-group-item" v-for="(tag,index) in tags">
+          <h4 class="list-group-item-heading"><i class="glyphicon glyphicon-bullhorn"></i> {{ tag.name }}</h4>
+          <p class="list-group-item-text">{{ tag.type }}</p>
+          <button class="btn btn-xs btn-danger" v-on:click="deleteTag(index,tag._id)">移除</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/vue-resource/dist/vue-resource.min.js"></script>
+<script src="app.js"></script>
+</html>
